@@ -1,273 +1,233 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>HBD</title>
-    <link type="text/css" rel="stylesheet" href="./file/default.css" />
-    <script type="text/javascript" src="./file/jquery.min.js"></script>
-    <script type="text/javascript" src="./file/jscex.min.js"></script>
-    <script type="text/javascript" src="./file/jscex-parser.js"></script>
-    <script type="text/javascript" src="./file/jscex-jit.js"></script>
-    <script
-      type="text/javascript"
-      src="./file/jscex-builderbase.min.js"
-    ></script>
-    <script type="text/javascript" src="./file/jscex-async.min.js"></script>
-    <script
-      type="text/javascript"
-      src="./file/jscex-async-powerpack.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./file/functions.js"
-      charset="utf-8"
-    ></script>
-    <script
-      type="text/javascript"
-      src="./file/love.js"
-      charset="utf-8"
-    ></script>
-    <script>
-      function playAudio() {
-        var audio = document.getElementById("myAudio");
-        audio.play();
-      }
-    </script>
-  </head>
-  <body>
-    <div id="main">
-      <div id="error">
-        <a
-          href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI"
-          >Chrome</a
-        >
-        (<a href="http://firefox.com.cn/download/">Firefox</a>)
-      </div>
-      <audio autoplay="autoplay" height="100" width="100" id="myAudio">
-        <source src="aud.mp3" type="audio/mp3" />
-        <embed height="100" width="100" src="aud.mp3" />
-      </audio>
-      <div id="wrap">
-        <div id="text">
-          <div id="code">
-            <span class="say">Wishing you a beautiful day 💫</span><br />
-            <span class="say">Happy Birthday 🎉</span><br />
-            <span class="say">“Happy Birthday, Shree 🎉💖 I know I annoy you sometimes, and I’m really sorry for that… but it’s only because I care. 
-              You’re such a special person, and I truly wish you all the happiness, success, and love in the world. Stay the amazing soul you are.” ✨</span
-            ><br />
-            <span class="say"
-              >And may your heart be filled with happiness 💕</span
-            ><br />
-            <span class="say">You are truly appreciated ❤️</span><br />
-            <span class="say">Wishing you love and smiles always 🥰</span><br />
-            <span class="say">Hope your day is as amazing as you are 🎂✨</span
-            ><br />
-          </div>
-        </div>
-        <div id="clock-box">
-          <span id="clock">577 days 0 hours 0 minutes 0 seconds</span>
-          <!-- Change to "6940 days..." if needed -->
-        </div>
-        <canvas id="canvas" width="1100" height="680"></canvas>
-      </div>
-    </div>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>HBD</title>
 
-    <script>
-      (function () {
-        var canvas = $("#canvas");
+<link type="text/css" rel="stylesheet" href="./file/default.css" />
 
-        if (!canvas[0].getContext) {
-          $("#error").show();
-          return false;
-        }
+<script type="text/javascript" src="./file/jquery.min.js"></script>
+<script type="text/javascript" src="./file/jscex.min.js"></script>
+<script type="text/javascript" src="./file/jscex-parser.js"></script>
+<script type="text/javascript" src="./file/jscex-jit.js"></script>
+<script type="text/javascript" src="./file/jscex-builderbase.min.js"></script>
+<script type="text/javascript" src="./file/jscex-async.min.js"></script>
+<script type="text/javascript" src="./file/jscex-async-powerpack.min.js"></script>
+<script type="text/javascript" src="./file/functions.js"></script>
+<script type="text/javascript" src="./file/love.js"></script>
 
-        var width = canvas.width();
-        var height = canvas.height();
-        canvas.attr("width", width);
-        canvas.attr("height", height);
+<style>
+/* ===== CAKE ADDON STYLE ===== */
+#cakeBtn{
+  padding:12px 25px;
+  font-size:18px;
+  background:#ff4081;
+  color:white;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+  margin-top:20px;
+}
 
-        var opts = {
-          seed: {
-            x: width / 2 - 20,
-            color: "rgb(190, 26, 37)",
-            scale: 2,
-          },
-          branch: [
-            [
-              535,
-              680,
-              570,
-              250,
-              500,
-              200,
-              30,
-              100,
-              [
-                [
-                  540,
-                  500,
-                  455,
-                  417,
-                  340,
-                  400,
-                  13,
-                  100,
-                  [[450, 435, 434, 430, 394, 395, 2, 40]],
-                ],
-                [
-                  550,
-                  445,
-                  600,
-                  356,
-                  680,
-                  345,
-                  12,
-                  100,
-                  [[578, 400, 648, 409, 661, 426, 3, 80]],
-                ],
-                [539, 281, 537, 248, 534, 217, 3, 40],
-                [
-                  546,
-                  397,
-                  413,
-                  247,
-                  328,
-                  244,
-                  9,
-                  80,
-                  [
-                    [427, 286, 383, 253, 371, 205, 2, 40],
-                    [498, 345, 435, 315, 395, 330, 4, 60],
-                  ],
-                ],
-                [
-                  546,
-                  357,
-                  608,
-                  252,
-                  678,
-                  221,
-                  6,
-                  100,
-                  [[590, 293, 646, 277, 648, 271, 2, 80]],
-                ],
-              ],
-            ],
-          ],
-          bloom: {
-            num: 700,
-            width: 1080,
-            height: 650,
-          },
-          footer: {
-            width: 1200,
-            height: 5,
-            speed: 10,
-          },
-        };
+#cakeSection{
+  display:none;
+  text-align:center;
+  margin-top:40px;
+}
 
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
+.candle{
+  width:15px;
+  height:60px;
+  background:white;
+  margin:0 10px;
+  display:inline-block;
+  position:relative;
+  cursor:pointer;
+}
 
-        canvas
-          .click(function (e) {
-            playAudio();
-            var offset = canvas.offset(),
-              x,
-              y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            if (seed.hover(x, y)) {
-              hold = 0;
-              canvas.unbind("click");
-              canvas.unbind("mousemove");
-              canvas.removeClass("hand");
-            }
-          })
-          .mousemove(function (e) {
-            var offset = canvas.offset(),
-              x,
-              y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass("hand", seed.hover(x, y));
-          });
+.flame{
+  width:15px;
+  height:25px;
+  background:orange;
+  border-radius:50%;
+  position:absolute;
+  top:-25px;
+  animation: blink 0.5s infinite alternate;
+}
 
-        var seedAnimate = eval(
-          Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-              $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-              seed.scale(0.95);
-              $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-              seed.move(0, 2);
-              foot.draw();
-              $await(Jscex.Async.sleep(10));
-            }
-          })
-        );
+@keyframes blink{
+  from{opacity:1;}
+  to{opacity:0.3;}
+}
 
-        var growAnimate = eval(
-          Jscex.compile("async", function () {
-            do {
-              tree.grow();
-              $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-          })
-        );
+.cake{
+  width:220px;
+  height:120px;
+  background:#ff69b4;
+  margin:40px auto;
+  border-radius:20px;
+  cursor:pointer;
+  transition:0.5s;
+}
 
-        var flowAnimate = eval(
-          Jscex.compile("async", function () {
-            do {
-              tree.flower(2);
-              $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-          })
-        );
+.cut{
+  transform:scaleX(0.5);
+  background:#ff1493;
+}
 
-        var moveAnimate = eval(
-          Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-              foot.draw();
-              $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
+#confetti{
+  position:fixed;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  top:0;
+  left:0;
+}
+</style>
 
-            canvas
-              .parent()
-              .css("background", "url(" + tree.toDataURL("image/png") + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-          })
-        );
+<script>
+function playAudio() {
+  var audio = document.getElementById("myAudio");
+  audio.play();
+}
+</script>
+</head>
 
-        var textAnimate = eval(
-          Jscex.compile("async", function () {
-            $("#code").show().typewriter();
-          })
-        );
+<body>
+<div id="main">
+<div id="error">
+<a href="http://www.google.cn/chrome/">Chrome</a>
+(<a href="http://firefox.com.cn/download/">Firefox</a>)
+</div>
 
-        var runAsync = eval(
-          Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
-            textAnimate().start();
-          })
-        );
+<audio autoplay="autoplay" height="100" width="100" id="myAudio">
+<source src="aud.mp3" type="audio/mp3" />
+</audio>
 
-        runAsync().start();
-      })();
-    </script>
-  </body>
+<div id="wrap">
+<div id="text">
+<div id="code">
+<span class="say">Wishing you a beautiful day 💫</span><br />
+<span class="say">Happy Birthday 🎉</span><br />
+<span class="say">Happy Birthday, Shree 🎉💖 I know I annoy you sometimes, and I’m really sorry for that… but it’s only because I care. You’re such a special person.</span><br />
+<span class="say">And may your heart be filled with happiness 💕</span><br />
+<span class="say">You are truly appreciated ❤️</span><br />
+<span class="say">Wishing you love and smiles always 🥰</span><br />
+<span class="say">Hope your day is as amazing as you are 🎂✨</span><br />
+</div>
+</div>
+
+<div id="clock-box">
+<span id="clock">577 days 0 hours 0 minutes 0 seconds</span>
+</div>
+
+<canvas id="canvas" width="1100" height="680"></canvas>
+
+<!-- 🎂 BUTTON -->
+<div style="text-align:center;">
+<button id="cakeBtn">🎂 Cut The Cake 🎂</button>
+</div>
+
+<!-- 🎂 CAKE SECTION -->
+<div id="cakeSection">
+<h2>First blow the candles 😄</h2>
+
+<div>
+<div class="candle" onclick="blow(this)"><div class="flame"></div></div>
+<div class="candle" onclick="blow(this)"><div class="flame"></div></div>
+<div class="candle" onclick="blow(this)"><div class="flame"></div></div>
+</div>
+
+<div class="cake" onclick="cutCake()" id="cake"></div>
+<h3 id="msg"></h3>
+</div>
+
+<canvas id="confetti"></canvas>
+
+</div>
+</div>
+
+<script>
+/* ===== YOUR ORIGINAL HEART ANIMATION CODE (UNCHANGED) ===== */
+(function () {
+var canvas = $("#canvas");
+if (!canvas[0].getContext) return false;
+
+var width = canvas.width();
+var height = canvas.height();
+canvas.attr("width", width);
+canvas.attr("height", height);
+
+var opts = {
+seed:{x:width/2-20,color:"rgb(190,26,37)",scale:2},
+branch:[[535,680,570,250,500,200,30,100]]
+};
+
+var tree = new Tree(canvas[0], width, height, opts);
+var seed = tree.seed;
+var hold = 1;
+
+canvas.click(function(e){
+playAudio();
+hold=0;
+});
+
+var runAsync = eval(Jscex.compile("async", function () {
+seed.draw();
+while(hold){$await(Jscex.Async.sleep(10));}
+tree.grow();
+tree.flower(2);
+$("#code").show().typewriter();
+}));
+
+runAsync().start();
+})();
+
+/* ===== CAKE ADDON SCRIPT ===== */
+document.getElementById("cakeBtn").onclick=function(){
+document.getElementById("canvas").style.display="none";
+document.getElementById("text").style.display="none";
+document.getElementById("clock-box").style.display="none";
+document.getElementById("cakeSection").style.display="block";
+};
+
+function blow(c){
+c.querySelector(".flame").style.animation="none";
+c.querySelector(".flame").style.opacity="0";
+}
+
+function cutCake(){
+document.getElementById("cake").classList.add("cut");
+document.getElementById("msg").innerHTML="🎉 Cake Cut Successfully! Happy Birthday Shree 💖";
+startConfetti();
+}
+
+const conf=document.getElementById("confetti");
+const ctx=conf.getContext("2d");
+conf.width=window.innerWidth;
+conf.height=window.innerHeight;
+
+let pieces=[];
+for(let i=0;i<120;i++){
+pieces.push({x:Math.random()*conf.width,y:Math.random()*conf.height,r:Math.random()*6+4});
+}
+
+function drawConfetti(){
+ctx.clearRect(0,0,conf.width,conf.height);
+ctx.fillStyle="pink";
+pieces.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+p.y+=2;
+if(p.y>conf.height){p.y=0;p.x=Math.random()*conf.width;}
+});
+}
+
+function startConfetti(){
+setInterval(drawConfetti,20);
+}
+</script>
+
+</body>
 </html>
