@@ -2,14 +2,57 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>HBD</title>
 <link type="text/css" rel="stylesheet" href="./file/default.css" />
 <style>
-  /* Add black outline to birthday text */
+  /* Fullscreen mobile-friendly adjustments */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #ffe; /* Match canvas background */
+  }
+  #main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffe;
+  }
+  #wrap {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+  }
+  canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    background: #ffe; /* Fallback */
+  }
+  /* Ensure text and clock appear above canvas */
+  #text, #clock-box {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none; /* Allow clicks to pass through to canvas */
+  }
+  #clock-box {
+    pointer-events: auto; /* Enable hover if needed */
+  }
+  /* Adjust text size for small screens */
+  @media (max-width: 600px) {
+    #code .say {
+      font-size: 14px;
+      text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000; /* Slightly smaller outline */
+    }
+  }
+  /* Black outline for all .say text (already present) */
   .say {
     text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
-    /* Optional: adjust text color for better contrast */
-    /* color: #fff; */ 
   }
 </style>
 <script type="text/javascript" src="./file/jquery.min.js"></script>
